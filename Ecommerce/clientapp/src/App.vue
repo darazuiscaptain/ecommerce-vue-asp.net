@@ -1,17 +1,11 @@
 <template>
-	<div>
-		<product-list></product-list>
-	</div>
+	<router-view></router-view>
 </template>
 
-<script>
-	import ProductList from "./components/products/List.vue"
-	
+<script>	
 	export default {
 		name: 'app',
-		components:{
-			ProductList
-		}
+
 	}
 </script>
 
