@@ -21,53 +21,11 @@
 
 export default {
   name: "product-list",
-  data() {
-    return {
-      products: [
-        // product omitted for brevity
-        {
-          name: "Samsung Galaxy S1",
-          slug: "samsung-galaxy-s1",
-          thumbnail: "https://via.placeholder.com/200x300",
-          shortDescription:
-            "Samsung Galaxy S8 Android smartphone with true edge to edge display",
-          price: 499.99,
-          description:
-            "sdjfa sjd;lkfj ;aejsahd fwejermmc k,sdjfwk eqwh ekfafj;asj d;jd; k;ek4njfd jdcu ygsdf uuayds asdfhehty sdfeh sdbdb.sdhfsa sadhfeh,sdh sdfh ahdse.",
-        },
-        {
-          name: "Samsung Galaxy S2",
-          slug: "samsung-galaxy-s2",
-          thumbnail: "https://via.placeholder.com/200x300",
-          shortDescription:
-            "Samsung Galaxy S8 Android smartphone with true edge to edge display",
-          price: 499.99,
-          description:
-            "sdjfa sjd;lkfj ;aejsahd fwejermmc k,sdjfwk eqwh ekfafj;asj d;jd; k;ek4njfd jdcu ygsdf uuayds asdfhehty sdfeh sdbdb.sdhfsa sadhfeh,sdh sdfh ahdse.",
-        },
-        {
-          name: "Samsung Galaxy S3",
-          slug: "samsung-galaxy-s3",
-          thumbnail: "https://via.placeholder.com/200x300",
-          shortDescription:
-            "Samsung Galaxy S8 Android smartphone with true edge to edge display",
-          price: 499.99,
-          description:
-            "sdjfa sjd;lkfj ;aejsahd fwejermmc k,sdjfwk eqwh ekfafj;asj d;jd; k;ek4njfd jdcu ygsdf uuayds asdfhehty sdfeh sdbdb.sdhfsa sadhfeh,sdh sdfh ahdse.",
-		},
-		{
-          name: "Samsung Galaxy S4",
-          slug: "samsung-galaxy-s4",
-          thumbnail: "https://via.placeholder.com/200x300",
-          shortDescription:
-            "Samsung Galaxy S8 Android smartphone with true edge to edge display",
-          price: 499.99,
-          description:
-            "sdjfa sjd;lkfj ;aejsahd fwejermmc k,sdjfwk eqwh ekfafj;asj d;jd; k;ek4njfd jdcu ygsdf uuayds asdfhehty sdfeh sdbdb.sdhfsa sadhfeh,sdh sdfh ahdse.",
-        },
-      ],
-      selectedProduct: null,
-    };
+  props: {
+	  products: {
+		  type: Array,
+		  required: true
+	  }
   },
   methods: {
     select(product) {

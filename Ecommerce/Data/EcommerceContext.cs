@@ -14,5 +14,16 @@ namespace Ecommerce.Data
         {
 
         }
+
+        public DbSet<Product> Products { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            builder.Entity<Product>()
+                .HasIndex(b => b.Slug)
+                .IsUnique();
+        }
     }
 }

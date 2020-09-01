@@ -142,6 +142,53 @@ namespace Ecommerce.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("Ecommerce.Data.Entities.Product", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("id")
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnName("description")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnName("name")
+                        .HasColumnType("text");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnName("price")
+                        .HasColumnType("numeric");
+
+                    b.Property<string>("ShortDescription")
+                        .IsRequired()
+                        .HasColumnName("short_description")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Slug")
+                        .IsRequired()
+                        .HasColumnName("slug")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Thumbnail")
+                        .IsRequired()
+                        .HasColumnName("thumbnail")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id")
+                        .HasName("pk_products");
+
+                    b.HasIndex("Slug")
+                        .IsUnique()
+                        .HasName("ix_products_slug");
+
+                    b.ToTable("products");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
                     b.Property<int>("Id")

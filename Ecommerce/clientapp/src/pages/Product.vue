@@ -12,18 +12,20 @@ export default {
     },
     data() {
         return {
-            product: {
-                name: "Samsung Galaxy S1",
-                slug: "samsung-galaxy-s1",
-                thumbnail: "https://via.placeholder.com/200x300",
-                shortDescription:
-                    "Samsung Galaxy S8 Android smartphone with true edge to edge display",
-                price: 499.99,
-                description:
-                    "sdjfa sjd;lkfj ;aejsahd fwejermmc k,sdjfwk eqwh ekfafj;asj d;jd; k;ek4njfd jdcu ygsdf uuayds asdfhehty sdfeh sdbdb.sdhfsa sadhfeh,sdh sdfh ahdse.",
-            }
+            product: null
         };
     },
+	mounted(){
+		const slug = this.$route.params.slug;
+		
+		fetch(`/api/products/${slug}`)
+		.then(response => {
+			return response.json();
+		})
+		.then(product => {
+			this.product = product;
+		});
+	}
 };
 </script>
 
