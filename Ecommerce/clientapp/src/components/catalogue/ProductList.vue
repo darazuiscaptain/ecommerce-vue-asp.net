@@ -18,14 +18,13 @@
 </template>
 
 <script>
-
 export default {
   name: "product-list",
   props: {
-	  products: {
-		  type: Array,
-		  required: true
-	  }
+    products: {
+      type: Array,
+      required: true,
+    },
   },
   methods: {
     select(product) {
