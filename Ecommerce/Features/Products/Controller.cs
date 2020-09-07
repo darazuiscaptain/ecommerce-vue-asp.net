@@ -19,6 +19,7 @@ namespace Ecommerce.Products.Controllers
         [HttpGet]
         public async Task<IActionResult> Find()
         {
+            await Task.Delay(2000);
             var products = await _db.Products.ToListAsync();
             return Ok(products);
         }
