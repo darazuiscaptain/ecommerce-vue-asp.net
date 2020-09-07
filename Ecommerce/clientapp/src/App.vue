@@ -11,9 +11,9 @@
 				</b-collapse>
 			</b-container>
 		</b-navbar>
-
-		<router-view></router-view>
-
+		<transition name="fade" mode="out-in">
+			<router-view></router-view>
+		</transition>
 	</div>
 </template>
 
@@ -32,5 +32,15 @@
 	div.app,
 	div.page {
 		height: 100% !important;
+	}
+
+	.fade-enter-active,
+	.fade-leave-active {
+		transition: opacity 0.3s ease-in-out;
+	}
+
+	.fade-enter,
+	.fade-leave-to{
+		opacity: 0;
 	}
 </style>
