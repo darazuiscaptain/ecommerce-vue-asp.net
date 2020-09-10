@@ -3,17 +3,15 @@ using System;
 using Ecommerce.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Ecommerce.Migrations
 {
     [DbContext(typeof(EcommerceContext))]
-    [Migration("20200831085518_ProductEntity")]
-    partial class ProductEntity
+    partial class EcommerceContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -144,6 +142,108 @@ namespace Ecommerce.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("Ecommerce.Data.Entities.Brand", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("id")
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnName("name")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id")
+                        .HasName("pk_brands");
+
+                    b.ToTable("brands");
+                });
+
+            modelBuilder.Entity("Ecommerce.Data.Entities.Colour", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("id")
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnName("name")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id")
+                        .HasName("pk_colours");
+
+                    b.ToTable("colours");
+                });
+
+            modelBuilder.Entity("Ecommerce.Data.Entities.Feature", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("id")
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnName("name")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id")
+                        .HasName("pk_features");
+
+                    b.ToTable("features");
+                });
+
+            modelBuilder.Entity("Ecommerce.Data.Entities.Image", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("id")
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<int>("ProductId")
+                        .HasColumnName("product_id")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Url")
+                        .IsRequired()
+                        .HasColumnName("url")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id")
+                        .HasName("pk_images");
+
+                    b.HasIndex("ProductId")
+                        .HasName("ix_images_product_id");
+
+                    b.ToTable("images");
+                });
+
+            modelBuilder.Entity("Ecommerce.Data.Entities.OS", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("id")
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnName("name")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id")
+                        .HasName("pk_os");
+
+                    b.ToTable("os");
+                });
+
             modelBuilder.Entity("Ecommerce.Data.Entities.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -151,6 +251,10 @@ namespace Ecommerce.Migrations
                         .HasColumnName("id")
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<int>("BrandId")
+                        .HasColumnName("brand_id")
+                        .HasColumnType("integer");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -162,8 +266,12 @@ namespace Ecommerce.Migrations
                         .HasColumnName("name")
                         .HasColumnType("text");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnName("price")
+                    b.Property<int>("OSId")
+                        .HasColumnName("os_id")
+                        .HasColumnType("integer");
+
+                    b.Property<decimal>("ScreenSize")
+                        .HasColumnName("screen_size")
                         .HasColumnType("numeric");
 
                     b.Property<string>("ShortDescription")
@@ -176,6 +284,14 @@ namespace Ecommerce.Migrations
                         .HasColumnName("slug")
                         .HasColumnType("text");
 
+                    b.Property<decimal>("StandbyTime")
+                        .HasColumnName("standby_time")
+                        .HasColumnType("numeric");
+
+                    b.Property<decimal>("TalkTime")
+                        .HasColumnName("talk_time")
+                        .HasColumnType("numeric");
+
                     b.Property<string>("Thumbnail")
                         .IsRequired()
                         .HasColumnName("thumbnail")
@@ -184,11 +300,85 @@ namespace Ecommerce.Migrations
                     b.HasKey("Id")
                         .HasName("pk_products");
 
+                    b.HasIndex("BrandId")
+                        .HasName("ix_products_brand_id");
+
+                    b.HasIndex("OSId")
+                        .HasName("ix_products_os_id");
+
                     b.HasIndex("Slug")
                         .IsUnique()
                         .HasName("ix_products_slug");
 
                     b.ToTable("products");
+                });
+
+            modelBuilder.Entity("Ecommerce.Data.Entities.ProductFeature", b =>
+                {
+                    b.Property<int>("ProductId")
+                        .HasColumnName("product_id")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("FeatureId")
+                        .HasColumnName("feature_id")
+                        .HasColumnType("integer");
+
+                    b.HasKey("ProductId", "FeatureId")
+                        .HasName("pk_product_features");
+
+                    b.HasIndex("FeatureId")
+                        .HasName("ix_product_features_feature_id");
+
+                    b.ToTable("product_features");
+                });
+
+            modelBuilder.Entity("Ecommerce.Data.Entities.ProductVariant", b =>
+                {
+                    b.Property<int>("ProductId")
+                        .HasColumnName("product_id")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("ColourId")
+                        .HasColumnName("colour_id")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("StorageId")
+                        .HasColumnName("storage_id")
+                        .HasColumnType("integer");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnName("price")
+                        .HasColumnType("numeric");
+
+                    b.HasKey("ProductId", "ColourId", "StorageId")
+                        .HasName("pk_product_variants");
+
+                    b.HasIndex("ColourId")
+                        .HasName("ix_product_variants_colour_id");
+
+                    b.HasIndex("StorageId")
+                        .HasName("ix_product_variants_storage_id");
+
+                    b.ToTable("product_variants");
+                });
+
+            modelBuilder.Entity("Ecommerce.Data.Entities.Storage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("id")
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("Capacity")
+                        .IsRequired()
+                        .HasColumnName("capacity")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id")
+                        .HasName("pk_storage");
+
+                    b.ToTable("storage");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -317,6 +507,74 @@ namespace Ecommerce.Migrations
                         .HasName("pk_user_tokens");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("Ecommerce.Data.Entities.Image", b =>
+                {
+                    b.HasOne("Ecommerce.Data.Entities.Product", "Product")
+                        .WithMany("Images")
+                        .HasForeignKey("ProductId")
+                        .HasConstraintName("fk_images_products_product_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Ecommerce.Data.Entities.Product", b =>
+                {
+                    b.HasOne("Ecommerce.Data.Entities.Brand", "Brand")
+                        .WithMany("Products")
+                        .HasForeignKey("BrandId")
+                        .HasConstraintName("fk_products_brands_brand_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Ecommerce.Data.Entities.OS", "OS")
+                        .WithMany("Products")
+                        .HasForeignKey("OSId")
+                        .HasConstraintName("fk_products_os_os_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Ecommerce.Data.Entities.ProductFeature", b =>
+                {
+                    b.HasOne("Ecommerce.Data.Entities.Feature", "Feature")
+                        .WithMany("ProductFeatures")
+                        .HasForeignKey("FeatureId")
+                        .HasConstraintName("fk_product_features_features_feature_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Ecommerce.Data.Entities.Product", "Product")
+                        .WithMany("ProductFeatures")
+                        .HasForeignKey("ProductId")
+                        .HasConstraintName("fk_product_features_products_product_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Ecommerce.Data.Entities.ProductVariant", b =>
+                {
+                    b.HasOne("Ecommerce.Data.Entities.Colour", "Colour")
+                        .WithMany("ProductVariants")
+                        .HasForeignKey("ColourId")
+                        .HasConstraintName("fk_product_variants_colours_colour_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Ecommerce.Data.Entities.Product", "Product")
+                        .WithMany("ProductVariants")
+                        .HasForeignKey("ProductId")
+                        .HasConstraintName("fk_product_variants_products_product_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Ecommerce.Data.Entities.Storage", "Storage")
+                        .WithMany("ProductVariants")
+                        .HasForeignKey("StorageId")
+                        .HasConstraintName("fk_product_variants_storage_storage_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
