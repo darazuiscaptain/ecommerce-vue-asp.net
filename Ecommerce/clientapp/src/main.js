@@ -4,6 +4,11 @@ import App from './App.vue';
 import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue';
 import  NProgress from 'nprogress';
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { faSync } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 import 'nprogress/nprogress.css'
@@ -14,6 +19,9 @@ Vue.use(BootstrapVueIcons)
 
 import Catalogue from './pages/Catalogue.vue'
 import Product from './pages/Product.vue'
+
+library.add([faChevronDown, faSync]);
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.config.productionTip = false;
 

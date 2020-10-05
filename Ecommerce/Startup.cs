@@ -53,6 +53,7 @@ namespace Ecommerce
             }
 
             app.UseRouting();
+            app.UseStaticFiles();
             app.UseSpaStaticFiles();
             app.UseAuthorization();
 
