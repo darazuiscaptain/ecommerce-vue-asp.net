@@ -2,10 +2,14 @@
   <b-container fluid class="page">
     <b-row>
       <b-col cols="3">
-        <filters v-if="filters.brands.length" :filters="filters" />
+        <filters v-if="products.length" :filters="filters" />
       </b-col>
       <b-col cols="9">
-        <product-list :products="products" />
+        <div class="mt-4 flex">
+          <search-bar class="search"/>
+          <product-sort class="ml-4"/>
+        </div>
+        <product-list v-if="products.length" :products="sortedProducts" />
       </b-col>
     </b-row>
   </b-container>
@@ -13,14 +17,18 @@
 
 <script>
 import axios from "axios";
-import ProductList from "../components/catalogue/ProductList.vue";
-import Filters from "../components/catalogue/Filters.vue";
+import ProductList from "@/components/catalogue/ProductList.vue";
+import Filters from "@/components/catalogue/Filters.vue";
+import ProductSort from "@/components/catalogue/ProductSort";
+import SearchBar from "@/components/catalogue/SearchBar.vue";
 
 export default {
   name: "catalogue",
   components: {
     ProductList,
     Filters,
+    ProductSort,
+    SearchBar
   },
 
   data() {
@@ -35,15 +43,32 @@ export default {
       },
     };
   },
-  // mounted(){
-  // 	fetch("/api/products")
-  // 	.then(response => {
-  // 		return response.json();
-  // 	})
-  // 	.then(products => {
-  // 		this.products = products;
-  // 	});
-  // }
+  computed: {
+    sort() {
+      return this.$route.query.sort || 0;
+    },
+    sortedProducts() {
+      var newProducts = [...this.products];
+      switch (this.sort) {
+        case 1:
+          return newProducts.sort((a, b) => {
+            return b.price > a.price;
+          });
+        case 2:
+          return newProducts.sort((a, b) => {
+            return a.name > b.name;
+          });
+        case 3:
+          return newProducts.sort((a, b) => {
+            return b.name > a.name;
+          });
+        default:
+          return newProducts.sort((a, b) => {
+            return a.price > b.price;
+          });
+      }
+    },
+  },
 
   beforeRouteEnter(to, from, next) {
     axios
@@ -73,3 +98,13 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.flex {
+  display: flex;
+  flex-direction: row;
+  .search {
+    flex: 1;
+  }
+}
+</style>

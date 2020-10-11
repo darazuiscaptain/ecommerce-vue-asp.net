@@ -21,7 +21,8 @@ namespace Ecommerce.Products.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Find(string q, string brands, int? minPrice, int? maxPrice, int? minScreen, int? maxScreen, string capacity, string colours, string os, string features)
+        public async Task<IActionResult> Find(string q, string brands, int? minPrice, int? maxPrice,
+            int? minScreen, int? maxScreen, string capacity, string colours, string os, string features)
         {
             var Query = $"%{q?.ToLower()}%";
             var Brands = string.IsNullOrEmpty(brands) ? new List<string>() : brands.Split('|').ToList();
