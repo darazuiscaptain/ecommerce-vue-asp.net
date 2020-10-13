@@ -71,8 +71,33 @@ namespace Ecommerce.Products.Controllers
         [HttpGet("{slug}")]
         public async Task<IActionResult> Get(string slug)
         {
-            var product = await _db.Products
-                .SingleOrDefaultAsync(x => x.Slug == slug);
+            var product = await _db.Products.Select(x => new ProductDetailsViewModel
+            {
+                Id = x.Id,
+                Slug = x.Slug,
+                Name = x.Name,
+                ShortDescription = x.ShortDescription,
+                Description = x.Description,
+                Price = x.ProductVariants.OrderBy(v => v.Price).First().Price,
+                Thumbnail = x.Thumbnail,
+                Images = x.Images.Select(i => i.Url),
+                Features = x.ProductFeatures.Select(f => f.Feature.Name),
+                Variants = x.ProductVariants
+                      .OrderBy(v => v.Colour.Name)
+                      .ThenBy(v => v.Storage.Capacity)
+                      .Select(v => new ProductVariantViewModel
+                      {
+                          ProductId = x.Id,
+                          Name = x.Name,
+                          Thumbnail = x.Thumbnail,
+                          ColourId = v.ColourId,
+                          Colour = v.Colour.Name,
+                          StorageId = v.StorageId,
+                          Capacity = v.Storage.Capacity,
+                          Price = v.Price
+                      })
+            })
+                  .FirstOrDefaultAsync(x => x.Slug == slug);
 
             if (product == null)
                 return NotFound();

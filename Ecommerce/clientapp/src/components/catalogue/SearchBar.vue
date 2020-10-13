@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import _ from "lodash";
 export default {
   name: "search-bar",
   data() {
@@ -28,7 +29,7 @@ export default {
     update(newVal) {
       this.value = newVal;
     },
-    search() {
+    search: _.debounce(function() {
       let query = Object.assign({}, this.$route.query);
       if (this.value.trim()) {
         query.q = this.value;
@@ -36,12 +37,12 @@ export default {
         delete query.q;
       }
       this.$router.push({ query: query });
-    },
+    }, 500),
   },
   watch: {
     value: function(val, oldVal) {
       this.search();
-    }
-  }
+    },
+  },
 };
 </script>
