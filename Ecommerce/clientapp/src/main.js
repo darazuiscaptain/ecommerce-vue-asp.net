@@ -20,6 +20,7 @@ import "bootstrap-vue/dist/bootstrap-vue.css";
 import "nprogress/nprogress.css";
 
 import store from "./store";
+import { currency } from "./filters";
 
 Vue.use(VueRouter);
 Vue.use(BootstrapVue);
@@ -31,6 +32,7 @@ import Cart from "./pages/Cart";
 
 library.add([faChevronDown, faSync, faArrowLeft, faTrashAlt]);
 Vue.component("font-awesome-icon", FontAwesomeIcon);
+Vue.filter("currency", currency);
 
 Vue.config.productionTip = false;
 

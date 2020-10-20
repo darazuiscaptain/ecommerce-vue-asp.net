@@ -8,19 +8,21 @@
         <b-col class="align-middle">
           <h5>{{ item.name }}</h5>
           <div>
-            Colour: <strong>{{ item.colour }}</strong>
+            Colour:
+            <strong>{{ item.colour }}</strong>
           </div>
           <div>
-            Capacity: <strong>{{ item.capacity }}</strong>
+            Capacity:
+            <strong>{{ item.capacity }}</strong>
           </div>
         </b-col>
       </b-row>
     </td>
-    <td>£{{ item.price }}</td>
+    <td>{{ item.price | currency }}</td>
     <td>
-      <b-form-input type="number" :value="item.quantity"> </b-form-input>
+      <b-form-input type="number" :value="item.quantity"></b-form-input>
     </td>
-    <td>£{{ item.price * item.quantity }}</td>
+    <td>{{ item.price * item.quantity | currency }}</td>
     <td>
       <b-button variant="danger">
         <!-- <i class="fas fa-trash-alt"></i> -->
