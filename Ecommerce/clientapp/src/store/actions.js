@@ -12,3 +12,13 @@ export const addProductToCart = ({ state, commit }, product) => {
     commit("addProductToCart", product);
   }
 };
+
+export const removeProductFromCart = ({ state, commit }, product) => {
+  const index = state.cart.findIndex(
+    (i) =>
+      i.productId === product.productId &&
+      i.colourId === product.colourId &&
+      i.storageId === product.storageId
+  );
+  commit("removeProductFromCart", index);
+};

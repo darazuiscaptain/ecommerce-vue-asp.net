@@ -7,3 +7,7 @@ export const updateProductQuantity = (state, index) => {
   cartItem.quantity++;
   state.cart.splice(index, 1, cartItem);
 };
+
+export const removeProductFromCart = (state, index) => {
+  state.cart.splice(index, 1);
+};
