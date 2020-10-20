@@ -5,14 +5,21 @@ import { BootstrapVue, BootstrapVueIcons } from "bootstrap-vue";
 import NProgress from "nprogress";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import { faSync } from "@fortawesome/free-solid-svg-icons";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import {
+  faChevronLeft,
+  faChevronRight,
+  faChevronDown,
+  faSync,
+  faArrowLeft,
+  faTrashAlt,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 import "nprogress/nprogress.css";
+
+import store from "./store";
 
 Vue.use(VueRouter);
 Vue.use(BootstrapVue);
@@ -20,8 +27,9 @@ Vue.use(BootstrapVueIcons);
 
 import Catalogue from "./pages/Catalogue.vue";
 import Product from "./pages/Product.vue";
+import Cart from "./pages/Cart";
 
-library.add([faChevronDown, faSync, faArrowLeft]);
+library.add([faChevronDown, faSync, faArrowLeft, faTrashAlt]);
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 
 Vue.config.productionTip = false;
@@ -29,6 +37,7 @@ Vue.config.productionTip = false;
 const routes = [
   { path: "/products", component: Catalogue },
   { path: "/products/:slug", component: Product },
+  { path: "/cart", component: Cart },
   { path: "*", redirect: "/products" },
 ];
 
@@ -45,5 +54,6 @@ router.afterEach((to, from) => {
 
 new Vue({
   router: router,
+  store: store,
   render: (h) => h(App),
 }).$mount("#app");

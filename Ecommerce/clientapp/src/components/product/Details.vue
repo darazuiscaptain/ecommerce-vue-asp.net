@@ -125,10 +125,10 @@ export default {
       this.index = index;
       this.open = true;
     },
-    addProductToCart() {
-      this.$store.dispatch("addProductToCart", this.variant);
-      this.$toastr("success", "Product added to cart successfully.");
-    },
+    // addProductToCart() {
+    //   this.$store.dispatch("addProductToCart", this.variant);
+    //   this.$toastr("success", "Product added to cart successfully.");
+    // },
     computeColours() {
       this.colours = _.uniqBy(
         this.product.variants.map((v) => {
@@ -161,6 +161,9 @@ export default {
         (v) => v.colourId == this.colour && v.storageId == this.capacity
       );
     },
+    addProductToCart(){
+      this.$store.dispatch("addProductToCart", this.variant);
+    }
   },
 };
 </script>
