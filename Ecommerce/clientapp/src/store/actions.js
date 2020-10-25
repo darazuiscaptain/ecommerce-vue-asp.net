@@ -22,3 +22,18 @@ export const removeProductFromCart = ({ state, commit }, product) => {
   );
   commit("removeProductFromCart", index);
 };
+
+export const setProductQuantity = ({ state, commit }, payload) => {
+  const index = state.cart.findIndex(
+    (i) =>
+      i.productId === payload.product.productId &&
+      i.colourId === payload.product.colourId &&
+      i.storageId === payload.product.storageId
+  );
+  if (payload.quantity > 0) {
+    payload.index = index;
+    commit("setProductQuantity", payload);
+  } else {
+    commit("removeProductFromCart", index);
+  }
+};

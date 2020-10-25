@@ -22,18 +22,19 @@
           <tr>
             <td>
               <b-button variant="secondary" @click="continueShopping">
-                <i class="fas fa-chevron-left"></i>
+                <!-- <i class="fas fa-chevron-left"></i> -->
+                <font-awesome-icon icon="chevron-left" />
                 Continue shopping
               </b-button>
             </td>
             <td colspan="2"></td>
             <td>
-              <strong>Total: £0.00</strong>
+              <strong>Total: {{ total | currency }}</strong>
             </td>
             <td>
               <b-button variant="success">
-                Checkout
-                <i class="fas fa-chevron-right"></i>
+                Check out
+                <font-awesome-icon icon="chevron-right" />
               </b-button>
             </td>
           </tr>
@@ -51,8 +52,11 @@ export default {
     CartItem,
   },
   computed: {
-    items() {
+    items: function() {
       return this.$store.state.cart;
+    },
+    total: function() {
+      return this.$store.getters.shoppingCartTotal;
     },
   },
   methods: {

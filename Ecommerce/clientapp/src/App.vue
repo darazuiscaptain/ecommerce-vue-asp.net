@@ -8,7 +8,8 @@
           <b-nav-item to="/products">Products</b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto mr-4">
-          <b-nav-item to="/cart">Cart</b-nav-item>
+          <!-- <b-nav-item to="/cart">Cart</b-nav-item> -->
+          <cart-summary></cart-summary>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
@@ -20,8 +21,13 @@
 </template>
 
 <script>
+import CartSummary from "./components/cart/CartSummary.vue";
+
 export default {
   name: "app",
+  components: {
+    CartSummary,
+  },
 };
 </script>
 

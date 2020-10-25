@@ -12,6 +12,7 @@ import {
   faSync,
   faArrowLeft,
   faTrashAlt,
+  faShoppingCart,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -30,7 +31,15 @@ import Catalogue from "./pages/Catalogue.vue";
 import Product from "./pages/Product.vue";
 import Cart from "./pages/Cart";
 
-library.add([faChevronDown, faSync, faArrowLeft, faTrashAlt]);
+library.add([
+  faChevronLeft,
+  faChevronRight,
+  faChevronDown,
+  faSync,
+  faArrowLeft,
+  faTrashAlt,
+  faShoppingCart,
+]);
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 Vue.filter("currency", currency);
 
