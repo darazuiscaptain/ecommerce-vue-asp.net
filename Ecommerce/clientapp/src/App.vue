@@ -28,6 +28,9 @@ export default {
   components: {
     CartSummary,
   },
+  beforeCreate() {
+    this.$store.commit("initialise");
+  },
 };
 </script>
 

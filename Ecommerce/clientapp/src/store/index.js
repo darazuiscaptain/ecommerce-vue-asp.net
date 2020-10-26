@@ -15,4 +15,8 @@ const store = new Vuex.Store({
     cart: [],
   },
 });
+
 export default store;
+store.subscribe((mutation, state) => {
+  localStorage.setItem("store", JSON.stringify(state));
+});
