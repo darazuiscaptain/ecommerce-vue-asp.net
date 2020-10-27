@@ -1,5 +1,7 @@
 <template>
   <b-container class="pt-4">
+    <vue-toastr ref="mytoast"></vue-toastr>
+
     <b-button variant="outline-secondary" @click.prevent="back">
       <i class="fas fa-arrow-left"></i>
       Back to results
@@ -93,6 +95,10 @@ export default {
     this.computeStorage();
     this.computeProductVariant();
   },
+  mounted() {
+    // Change default toast position.
+    this.$refs.mytoast.defaultPosition = "toast-top-right";
+  },
   data() {
     return {
       open: false,
@@ -161,9 +167,11 @@ export default {
         (v) => v.colourId == this.colour && v.storageId == this.capacity
       );
     },
-    addProductToCart(){
+    addProductToCart() {
       this.$store.dispatch("addProductToCart", this.variant);
-    }
+      // Send message to browser screen
+      this.$refs.mytoast.s("success", "Product added to cart successfully.");
+    },
   },
 };
 </script>

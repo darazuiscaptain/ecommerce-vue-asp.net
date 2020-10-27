@@ -16,6 +16,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
+import VueToastr from "vue-toastr";
+Vue.component("vue-toastr", VueToastr);
+
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 import "nprogress/nprogress.css";
