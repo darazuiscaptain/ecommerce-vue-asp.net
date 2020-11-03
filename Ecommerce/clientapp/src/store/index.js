@@ -12,6 +12,9 @@ const store = new Vuex.Store({
   mutations,
   getters,
   state: {
+    auth: null,
+    showAuthModel: false,
+    loading: false,
     cart: [],
   },
 });
