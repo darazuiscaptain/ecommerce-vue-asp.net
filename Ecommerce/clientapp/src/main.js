@@ -53,6 +53,17 @@ Vue.filter("currency", currency);
 
 Vue.config.productionTip = false;
 
+import axios from "axios";
+const initialStore = localStorage.getItem("store");
+if (initialStore) {
+  store.commit("initialise", JSON.parse(initialStore));
+  if (store.getters.isAuthenticated) {
+    axios.defaults.headers.common[
+      "Authorization"
+    ] = `Bearer ${store.state.auth.access_token}`;
+  }
+}
+
 const routes = [
   { path: "/products", component: Catalogue },
   { path: "/products/:slug", component: Product },

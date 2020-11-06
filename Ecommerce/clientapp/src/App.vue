@@ -39,9 +39,9 @@ export default {
       return this.$store.state.showAuthModal;
     },
   },
-  beforeCreate() {
-    this.$store.commit("initialise");
-  },
+  // beforeCreate() {
+  //   this.$store.commit("initialise");
+  // },
 };
 </script>
 
