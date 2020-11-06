@@ -10,6 +10,7 @@
         <b-navbar-nav class="ml-auto mr-4">
           <!-- <b-nav-item to="/cart">Cart</b-nav-item> -->
           <cart-summary></cart-summary>
+          <auth-nav-item></auth-nav-item>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
@@ -17,16 +18,26 @@
     <transition name="fade" mode="out-in">
       <router-view></router-view>
     </transition>
+    <auth-modal :show="showAuthModal"></auth-modal>
   </div>
 </template>
 
 <script>
 import CartSummary from "./components/cart/CartSummary.vue";
+import AuthNavItem from "./components/app/AuthNavItem.vue";
+import AuthModal from "./components/app/AuthModal.vue";
 
 export default {
   name: "app",
   components: {
+    AuthNavItem,
+    AuthModal,
     CartSummary,
+  },
+  computed: {
+    showAuthModal() {
+      return this.$store.state.showAuthModal;
+    },
   },
   beforeCreate() {
     this.$store.commit("initialise");

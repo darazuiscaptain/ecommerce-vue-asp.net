@@ -13,7 +13,7 @@ const store = new Vuex.Store({
   getters,
   state: {
     auth: null,
-    showAuthModel: false,
+    showAuthModal: false,
     loading: false,
     cart: [],
   },

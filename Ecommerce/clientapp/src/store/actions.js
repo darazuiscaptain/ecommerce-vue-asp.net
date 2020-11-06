@@ -77,3 +77,8 @@ export const register = ({ commit }, payload) => {
       });
   });
 };
+
+export const logout = ({ commit }) => {
+  commit("logout");
+  delete axios.defaults.headers.common["Authorization"];
+};

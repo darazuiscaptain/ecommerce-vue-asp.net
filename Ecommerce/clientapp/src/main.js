@@ -13,6 +13,8 @@ import {
   faArrowLeft,
   faTrashAlt,
   faShoppingCart,
+  faUser,
+  faSignOutAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -42,6 +44,8 @@ library.add([
   faArrowLeft,
   faTrashAlt,
   faShoppingCart,
+  faUser,
+  faSignOutAlt,
 ]);
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 Vue.filter("currency", currency);
