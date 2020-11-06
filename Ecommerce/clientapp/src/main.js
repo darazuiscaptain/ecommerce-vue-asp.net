@@ -35,6 +35,7 @@ Vue.use(BootstrapVueIcons);
 import Catalogue from "./pages/Catalogue.vue";
 import Product from "./pages/Product.vue";
 import Cart from "./pages/Cart";
+import Checkout from "./pages/Checkout";
 
 library.add([
   faChevronLeft,
@@ -56,6 +57,7 @@ const routes = [
   { path: "/products", component: Catalogue },
   { path: "/products/:slug", component: Product },
   { path: "/cart", component: Cart },
+  { path: "/checkout", component: Checkout, meta: { requiresAuth: true } },
   { path: "*", redirect: "/products" },
 ];
 
@@ -63,7 +65,16 @@ const router = new VueRouter({ mode: "history", routes: routes });
 
 router.beforeEach((to, from, next) => {
   NProgress.start();
-  next();
+  if (to.matched.some((route) => route.meta.requiresAuth)) {
+    if (!store.getters.isAuthenticated) {
+      store.commit("showAuthModal");
+      next({ path: from.path, query: { redirect: to.path } });
+    } else {
+      next();
+    }
+  } else {
+    next();
+  }
 });
 
 router.afterEach((to, from) => {
