@@ -50,7 +50,21 @@ library.add([
 ]);
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 
-import { ValidationProvider } from "vee-validate";
+import {
+  ValidationObserver,
+  ValidationProvider,
+  extend,
+  localize,
+} from "vee-validate";
+import zh_CN from "vee-validate/dist/locale/zh_CN.json";
+import * as rules from "vee-validate/dist/rules";
+// install rules and localization
+Object.keys(rules).forEach((rule) => {
+  extend(rule, rules[rule]);
+});
+localize("zh_CN", zh_CN);
+// Install components globally
+Vue.component("ValidationObserver", ValidationObserver);
 Vue.component("ValidationProvider", ValidationProvider);
 
 Vue.filter("currency", currency);
