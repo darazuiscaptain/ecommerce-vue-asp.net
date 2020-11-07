@@ -17,6 +17,7 @@
     "core-js": "^3.4.3",
     "lodash": "^4.17.20",
     "nprogress": "^0.2.0",
+    "vee-validate": "^3.4.3",
     "velocity-animate": "^1.5.2",
     "vue": "^2.6.12",
     "vue-slider-component": "^3.2.5",

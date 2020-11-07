@@ -49,6 +49,10 @@ library.add([
   faSignOutAlt,
 ]);
 Vue.component("font-awesome-icon", FontAwesomeIcon);
+
+import { ValidationProvider } from "vee-validate";
+Vue.component("ValidationProvider", ValidationProvider);
+
 Vue.filter("currency", currency);
 
 Vue.config.productionTip = false;
