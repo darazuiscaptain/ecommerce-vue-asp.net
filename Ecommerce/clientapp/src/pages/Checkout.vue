@@ -6,7 +6,7 @@
       <b-col cols="4" order="2">
         <cart-summary />
       </b-col>
-      <b-col cols="8">
+      <b-col cols="8" order="1">
         <checkout-form @success="onSuccess" />
       </b-col>
     </b-row>
