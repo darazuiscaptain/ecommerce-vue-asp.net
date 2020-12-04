@@ -37,6 +37,7 @@ import Catalogue from "./pages/Catalogue.vue";
 import Product from "./pages/Product.vue";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
+import Account from "./pages/Account.vue";
 
 library.add([
   faChevronLeft,
@@ -71,6 +72,7 @@ const routes = [
   { path: "/products/:slug", component: Product },
   { path: "/cart", component: Cart },
   { path: "/checkout", component: Checkout, meta: { requiresAuth: true } },
+  { path: "/account", component: Account, meta: { requiresAuth: true } },
   { path: "*", redirect: "/products" },
 ];
 
