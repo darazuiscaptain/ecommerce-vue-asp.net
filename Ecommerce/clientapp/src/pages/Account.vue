@@ -24,12 +24,11 @@ export default {
       this.orders = orders;
     },
   },
+  beforeRouteEnter(to, from, next) {
+    const vm = this;
+    axios.get("/api/orders").then((response) => {
+      next((vm) => vm.setData(response.data));
+    });
+  },
 };
-
-beforeRouteEnter(to, from, next) {
-  const vm = this;
-  axios.get("/api/orders").then(response => {
-    next(vm => vm.setData(response.data));
-  });
-}
 </script>

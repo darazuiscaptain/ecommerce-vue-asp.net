@@ -5,11 +5,11 @@
       <font-awesome-icon icon="user" />
       {{ fullName }}
     </template>
-    <!-- <b-dropdown-item v-if="isCustomer" to="/account">
-      <i class="fas fa-user"></i>
+    <b-dropdown-item to="/account">
+      <!-- <i class="fas fa-user"></i> -->
       <font-awesome-icon icon="user" />
       My Account
-    </b-dropdown-item> -->
+    </b-dropdown-item>
     <b-dropdown-item @click="logout">
       <!-- <i class="fas fa-sign-out-alt"></i> -->
       <font-awesome-icon icon="sign-out-alt" />
