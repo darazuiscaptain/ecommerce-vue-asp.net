@@ -26,7 +26,7 @@ import "bootstrap-vue/dist/bootstrap-vue.css";
 import "nprogress/nprogress.css";
 
 import store from "./store";
-import { currency } from "./filters";
+import { currency, date } from "./filters";
 import "./vee-validate";
 
 Vue.use(VueRouter);
@@ -53,6 +53,7 @@ library.add([
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 
 Vue.filter("currency", currency);
+Vue.filter("date", date);
 
 Vue.config.productionTip = false;
 
