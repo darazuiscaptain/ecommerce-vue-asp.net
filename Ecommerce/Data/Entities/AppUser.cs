@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Ecommerce.Data.Entities
 {
@@ -18,5 +15,8 @@ namespace Ecommerce.Data.Entities
         {
             get { return $"{FirstName} {LastName}"; }
         }
+
+        public List<Order> Orders { get; set; } = new List<Order>();
+
     }
 }
