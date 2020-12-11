@@ -3,8 +3,26 @@
   <Nodes>
 <Node Id="IModel" Label="EcommerceContext" ChangeTrackingStrategy="ChangeTrackingStrategy.Snapshot" PropertyAccessMode="PropertyAccessMode.Default" ProductVersion="3.1.7" Annotations="Npgsql:ValueGenerationStrategy: IdentityByDefaultColumn
 Relational:MaxIdentifierLength: 63" Category="Model" Group="Expanded" />
+<Node Id = "Address" Label="Address" Name="Address" BaseClass="" IsAbstract="False" ChangeTrackingStrategy="ChangeTrackingStrategy.Snapshot"  Annotations="ConstructorBinding: Microsoft.EntityFrameworkCore.Metadata.ConstructorBinding" Category="EntityType" Group="Expanded" />
 <Node Id = "AppRole" Label="AppRole" Name="AppRole" BaseClass="" IsAbstract="False" ChangeTrackingStrategy="ChangeTrackingStrategy.Snapshot"  Annotations="ConstructorBinding: Microsoft.EntityFrameworkCore.Metadata.ConstructorBinding
 Relational:TableName: AspNetRoles" Category="EntityType" Group="Expanded" />
+<Node Id = "Address.OrderId" Label="OrderId" Name="OrderId" Category="Property Primary" Type="int" MaxLength="None" Field="nofield" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="Npgsql:ValueGenerationStrategy: IdentityByDefaultColumn
+Relational:ColumnName: id
+TypeMapping: Microsoft.EntityFrameworkCore.Storage.IntTypeMapping" IsPrimaryKey="True" IsForeignKey="True" IsRequired="True" IsIndexed="False" IsShadow="True" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="ValueGenerated.OnAdd" />
+<Node Id = "Address.Address1" Label="Address1" Name="Address1" Category="Property Required" Type="string" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="Relational:ColumnName: address1
+TypeMapping: Microsoft.EntityFrameworkCore.Storage.StringTypeMapping" IsPrimaryKey="False" IsForeignKey="False" IsRequired="True" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
+<Node Id = "Address.Address2" Label="Address2" Name="Address2" Category="Property Optional" Type="string" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="Relational:ColumnName: address2
+TypeMapping: Microsoft.EntityFrameworkCore.Storage.StringTypeMapping" IsPrimaryKey="False" IsForeignKey="False" IsRequired="False" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
+<Node Id = "Address.County" Label="County" Name="County" Category="Property Required" Type="string" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="Relational:ColumnName: county
+TypeMapping: Microsoft.EntityFrameworkCore.Storage.StringTypeMapping" IsPrimaryKey="False" IsForeignKey="False" IsRequired="True" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
+<Node Id = "Address.FirstName" Label="FirstName" Name="FirstName" Category="Property Required" Type="string" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="Relational:ColumnName: first_name
+TypeMapping: Microsoft.EntityFrameworkCore.Storage.StringTypeMapping" IsPrimaryKey="False" IsForeignKey="False" IsRequired="True" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
+<Node Id = "Address.LastName" Label="LastName" Name="LastName" Category="Property Required" Type="string" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="Relational:ColumnName: last_name
+TypeMapping: Microsoft.EntityFrameworkCore.Storage.StringTypeMapping" IsPrimaryKey="False" IsForeignKey="False" IsRequired="True" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
+<Node Id = "Address.Postcode" Label="Postcode" Name="Postcode" Category="Property Required" Type="string" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="Relational:ColumnName: postcode
+TypeMapping: Microsoft.EntityFrameworkCore.Storage.StringTypeMapping" IsPrimaryKey="False" IsForeignKey="False" IsRequired="True" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
+<Node Id = "Address.TownCity" Label="TownCity" Name="TownCity" Category="Property Required" Type="string" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="Relational:ColumnName: town_city
+TypeMapping: Microsoft.EntityFrameworkCore.Storage.StringTypeMapping" IsPrimaryKey="False" IsForeignKey="False" IsRequired="True" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
 <Node Id = "AppUser" Label="AppUser" Name="AppUser" BaseClass="" IsAbstract="False" ChangeTrackingStrategy="ChangeTrackingStrategy.Snapshot"  Annotations="ConstructorBinding: Microsoft.EntityFrameworkCore.Metadata.ConstructorBinding
 Relational:TableName: AspNetUsers" Category="EntityType" Group="Expanded" />
 <Node Id = "AppRole.Id" Label="Id" Name="Id" Category="Property Primary" Type="int" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="Npgsql:ValueGenerationStrategy: IdentityByDefaultColumn
@@ -23,6 +41,7 @@ Relational:TableName: brands" Category="EntityType" Group="Expanded" />
 <Node Id = "AppUser.Id" Label="Id" Name="Id" Category="Property Primary" Type="int" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="Npgsql:ValueGenerationStrategy: IdentityByDefaultColumn
 Relational:ColumnName: id
 TypeMapping: Microsoft.EntityFrameworkCore.Storage.IntTypeMapping" IsPrimaryKey="True" IsForeignKey="False" IsRequired="True" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="ValueGenerated.OnAdd" />
+<Node Id = "AppUser.Orders" Label="Orders (*)" Name="Orders" Category="Navigation Collection" Type="List&lt;Order&gt;"  Field="" Dependent="Order" Principal="" Inverse="User" PropertyAccessMode="PropertyAccessMode.Default" />
 <Node Id = "AppUser.AccessFailedCount" Label="AccessFailedCount" Name="AccessFailedCount" Category="Property Required" Type="int" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="Relational:ColumnName: access_failed_count
 TypeMapping: Microsoft.EntityFrameworkCore.Storage.IntTypeMapping" IsPrimaryKey="False" IsForeignKey="False" IsRequired="True" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
 <Node Id = "AppUser.ConcurrencyStamp" Label="ConcurrencyStamp" Name="ConcurrencyStamp" Category="Property Optional" Type="string" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="Relational:ColumnName: concurrency_stamp
@@ -52,6 +71,8 @@ TypeMapping: Microsoft.EntityFrameworkCore.Storage.StringTypeMapping" IsPrimaryK
 TypeMapping: Microsoft.EntityFrameworkCore.Storage.StringTypeMapping" IsPrimaryKey="False" IsForeignKey="False" IsRequired="False" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
 <Node Id = "AppUser.PhoneNumberConfirmed" Label="PhoneNumberConfirmed" Name="PhoneNumberConfirmed" Category="Property Required" Type="bool" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="Relational:ColumnName: phone_number_confirmed
 TypeMapping: Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlBoolTypeMapping" IsPrimaryKey="False" IsForeignKey="False" IsRequired="True" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
+<Node Id = "AppUser.RefreshToken" Label="RefreshToken" Name="RefreshToken" Category="Property Optional" Type="string" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="Relational:ColumnName: refresh_token
+TypeMapping: Microsoft.EntityFrameworkCore.Storage.StringTypeMapping" IsPrimaryKey="False" IsForeignKey="False" IsRequired="False" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
 <Node Id = "AppUser.SecurityStamp" Label="SecurityStamp" Name="SecurityStamp" Category="Property Optional" Type="string" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="Relational:ColumnName: security_stamp
 TypeMapping: Microsoft.EntityFrameworkCore.Storage.StringTypeMapping" IsPrimaryKey="False" IsForeignKey="False" IsRequired="False" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
 <Node Id = "AppUser.TwoFactorEnabled" Label="TwoFactorEnabled" Name="TwoFactorEnabled" Category="Property Required" Type="bool" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="Relational:ColumnName: two_factor_enabled
@@ -93,14 +114,50 @@ TypeMapping: Microsoft.EntityFrameworkCore.Storage.IntTypeMapping" IsPrimaryKey=
 TypeMapping: Microsoft.EntityFrameworkCore.Storage.IntTypeMapping" IsPrimaryKey="False" IsForeignKey="True" IsRequired="True" IsIndexed="True" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
 <Node Id = "Image.Url" Label="Url" Name="Url" Category="Property Required" Type="string" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="Relational:ColumnName: url
 TypeMapping: Microsoft.EntityFrameworkCore.Storage.StringTypeMapping" IsPrimaryKey="False" IsForeignKey="False" IsRequired="True" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
-<Node Id = "Product" Label="Product" Name="Product" BaseClass="" IsAbstract="False" ChangeTrackingStrategy="ChangeTrackingStrategy.Snapshot"  Annotations="ConstructorBinding: Microsoft.EntityFrameworkCore.Metadata.ConstructorBinding
-Relational:TableName: products" Category="EntityType" Group="Expanded" />
+<Node Id = "Order" Label="Order" Name="Order" BaseClass="" IsAbstract="False" ChangeTrackingStrategy="ChangeTrackingStrategy.Snapshot"  Annotations="ConstructorBinding: Microsoft.EntityFrameworkCore.Metadata.ConstructorBinding
+Relational:TableName: orders" Category="EntityType" Group="Expanded" />
 <Node Id = "OS.Id" Label="Id" Name="Id" Category="Property Primary" Type="int" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="Npgsql:ValueGenerationStrategy: IdentityByDefaultColumn
 Relational:ColumnName: id
 TypeMapping: Microsoft.EntityFrameworkCore.Storage.IntTypeMapping" IsPrimaryKey="True" IsForeignKey="False" IsRequired="True" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="ValueGenerated.OnAdd" />
 <Node Id = "OS.Products" Label="Products (*)" Name="Products" Category="Navigation Collection" Type="List&lt;Product&gt;"  Field="" Dependent="Product" Principal="" Inverse="OS" PropertyAccessMode="PropertyAccessMode.Default" />
 <Node Id = "OS.Name" Label="Name" Name="Name" Category="Property Required" Type="string" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="Relational:ColumnName: name
 TypeMapping: Microsoft.EntityFrameworkCore.Storage.StringTypeMapping" IsPrimaryKey="False" IsForeignKey="False" IsRequired="True" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
+<Node Id = "OrderItem" Label="OrderItem" Name="OrderItem" BaseClass="" IsAbstract="False" ChangeTrackingStrategy="ChangeTrackingStrategy.Snapshot"  Annotations="ConstructorBinding: Microsoft.EntityFrameworkCore.Metadata.ConstructorBinding
+Relational:TableName: order_item" Category="EntityType" Group="Expanded" />
+<Node Id = "Order.Id" Label="Id" Name="Id" Category="Property Primary" Type="int" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="Npgsql:ValueGenerationStrategy: IdentityByDefaultColumn
+Relational:ColumnName: id
+TypeMapping: Microsoft.EntityFrameworkCore.Storage.IntTypeMapping" IsPrimaryKey="True" IsForeignKey="False" IsRequired="True" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="ValueGenerated.OnAdd" />
+<Node Id = "Order.DeliveryAddress" Label="DeliveryAddress (1)" Name="DeliveryAddress" Category="Navigation Property" Type="Address"  Field="" Dependent="Address" Principal="" Inverse="" PropertyAccessMode="PropertyAccessMode.Default" />
+<Node Id = "Order.Items" Label="Items (*)" Name="Items" Category="Navigation Collection" Type="List&lt;OrderItem&gt;"  Field="" Dependent="OrderItem" Principal="" Inverse="" PropertyAccessMode="PropertyAccessMode.Default" />
+<Node Id = "Order.User" Label="User (1)" Name="User" Category="Navigation Property" Type="AppUser"  Field="" Dependent="" Principal="AppUser" Inverse="Orders" PropertyAccessMode="PropertyAccessMode.Default" />
+<Node Id = "Order.PaymentStatus" Label="PaymentStatus" Name="PaymentStatus" Category="Property Required" Type="PaymentStatus" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="Relational:ColumnName: payment_status
+TypeMapping: Microsoft.EntityFrameworkCore.Storage.IntTypeMapping" IsPrimaryKey="False" IsForeignKey="False" IsRequired="True" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
+<Node Id = "Order.Placed" Label="Placed" Name="Placed" Category="Property Required" Type="DateTime" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="Relational:ColumnName: placed
+TypeMapping: Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTimestampTypeMapping" IsPrimaryKey="False" IsForeignKey="False" IsRequired="True" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
+<Node Id = "Order.UserId" Label="UserId" Name="UserId" Category="Property Foreign" Type="int" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="Relational:ColumnName: user_id
+TypeMapping: Microsoft.EntityFrameworkCore.Storage.IntTypeMapping" IsPrimaryKey="False" IsForeignKey="True" IsRequired="True" IsIndexed="True" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
+<Node Id = "Product" Label="Product" Name="Product" BaseClass="" IsAbstract="False" ChangeTrackingStrategy="ChangeTrackingStrategy.Snapshot"  Annotations="ConstructorBinding: Microsoft.EntityFrameworkCore.Metadata.ConstructorBinding
+Relational:TableName: products" Category="EntityType" Group="Expanded" />
+<Node Id = "OrderItem.Id" Label="Id" Name="Id" Category="Property Primary" Type="int" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="Npgsql:ValueGenerationStrategy: IdentityByDefaultColumn
+Relational:ColumnName: id
+TypeMapping: Microsoft.EntityFrameworkCore.Storage.IntTypeMapping" IsPrimaryKey="True" IsForeignKey="False" IsRequired="True" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="ValueGenerated.OnAdd" />
+<Node Id = "OrderItem.ProductVariant" Label="ProductVariant (1)" Name="ProductVariant" Category="Navigation Property" Type="ProductVariant"  Field="" Dependent="" Principal="ProductVariant" Inverse="" PropertyAccessMode="PropertyAccessMode.Default" />
+<Node Id = "OrderItem.ColourId" Label="ColourId" Name="ColourId" Category="Property Required" Type="int" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="Relational:ColumnName: colour_id
+TypeMapping: Microsoft.EntityFrameworkCore.Storage.IntTypeMapping" IsPrimaryKey="False" IsForeignKey="False" IsRequired="True" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
+<Node Id = "OrderItem.OrderId" Label="OrderId" Name="OrderId" Category="Property Foreign" Type="int" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="Relational:ColumnName: order_id
+TypeMapping: Microsoft.EntityFrameworkCore.Storage.IntTypeMapping" IsPrimaryKey="False" IsForeignKey="True" IsRequired="True" IsIndexed="True" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
+<Node Id = "OrderItem.ProductId" Label="ProductId" Name="ProductId" Category="Property Required" Type="int" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="Relational:ColumnName: product_id
+TypeMapping: Microsoft.EntityFrameworkCore.Storage.IntTypeMapping" IsPrimaryKey="False" IsForeignKey="False" IsRequired="True" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
+<Node Id = "OrderItem.ProductVariantColourId" Label="ProductVariantColourId" Name="ProductVariantColourId" Category="Property Foreign" Type="Nullable&lt;int&gt;" MaxLength="None" Field="nofield" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="Relational:ColumnName: product_variant_colour_id
+TypeMapping: Microsoft.EntityFrameworkCore.Storage.IntTypeMapping" IsPrimaryKey="False" IsForeignKey="True" IsRequired="False" IsIndexed="True" IsShadow="True" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
+<Node Id = "OrderItem.ProductVariantProductId" Label="ProductVariantProductId" Name="ProductVariantProductId" Category="Property Foreign" Type="Nullable&lt;int&gt;" MaxLength="None" Field="nofield" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="Relational:ColumnName: product_variant_product_id
+TypeMapping: Microsoft.EntityFrameworkCore.Storage.IntTypeMapping" IsPrimaryKey="False" IsForeignKey="True" IsRequired="False" IsIndexed="True" IsShadow="True" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
+<Node Id = "OrderItem.ProductVariantStorageId" Label="ProductVariantStorageId" Name="ProductVariantStorageId" Category="Property Foreign" Type="Nullable&lt;int&gt;" MaxLength="None" Field="nofield" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="Relational:ColumnName: product_variant_storage_id
+TypeMapping: Microsoft.EntityFrameworkCore.Storage.IntTypeMapping" IsPrimaryKey="False" IsForeignKey="True" IsRequired="False" IsIndexed="True" IsShadow="True" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
+<Node Id = "OrderItem.Quantity" Label="Quantity" Name="Quantity" Category="Property Required" Type="int" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="Relational:ColumnName: quantity
+TypeMapping: Microsoft.EntityFrameworkCore.Storage.IntTypeMapping" IsPrimaryKey="False" IsForeignKey="False" IsRequired="True" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
+<Node Id = "OrderItem.StorageId" Label="StorageId" Name="StorageId" Category="Property Required" Type="int" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="Relational:ColumnName: storage_id
+TypeMapping: Microsoft.EntityFrameworkCore.Storage.IntTypeMapping" IsPrimaryKey="False" IsForeignKey="False" IsRequired="True" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
 <Node Id = "ProductFeature" Label="ProductFeature" Name="ProductFeature" BaseClass="" IsAbstract="False" ChangeTrackingStrategy="ChangeTrackingStrategy.Snapshot"  Annotations="ConstructorBinding: Microsoft.EntityFrameworkCore.Metadata.ConstructorBinding
 Relational:TableName: product_features" Category="EntityType" Group="Expanded" />
 <Node Id = "Product.Id" Label="Id" Name="Id" Category="Property Primary" Type="int" MaxLength="None" Field="" PropertyAccessMode="PropertyAccessMode.Default" BeforeSaveBehavior="PropertySaveBehavior.Save" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="Npgsql:ValueGenerationStrategy: IdentityByDefaultColumn
@@ -209,13 +266,24 @@ TypeMapping: Microsoft.EntityFrameworkCore.Storage.StringTypeMapping" IsPrimaryK
 TypeMapping: Microsoft.EntityFrameworkCore.Storage.StringTypeMapping" IsPrimaryKey="False" IsForeignKey="False" IsRequired="False" IsIndexed="False" IsShadow="False" IsAlternateKey="False" IsConcurrencyToken="False" IsUnicode="True" ValueGenerated="None" />
   </Nodes>
   <Links>
+<Link Source = "IModel" Target="Address" Category="Contains" />
 <Link Source = "IModel" Target="AppRole" Category="Contains" />
+<Link Source = "Address" Target="Address.OrderId" Category="Contains" />
+<Link Source="Address" Target="Order" From="Address.OrderId" To="Order.Id" Name="Address -> Order" Annotations="Relational:Name: fk_address_orders_order_id" IsUnique="True" Label="1:1" Category="Foreign Key" />
+<Link Source = "Address" Target="Address.Address1" Category="Contains" />
+<Link Source = "Address" Target="Address.Address2" Category="Contains" />
+<Link Source = "Address" Target="Address.County" Category="Contains" />
+<Link Source = "Address" Target="Address.FirstName" Category="Contains" />
+<Link Source = "Address" Target="Address.LastName" Category="Contains" />
+<Link Source = "Address" Target="Address.Postcode" Category="Contains" />
+<Link Source = "Address" Target="Address.TownCity" Category="Contains" />
 <Link Source = "IModel" Target="AppUser" Category="Contains" />
 <Link Source = "AppRole" Target="AppRole.Id" Category="Contains" />
 <Link Source = "AppRole" Target="AppRole.ConcurrencyStamp" Category="Contains" />
 <Link Source = "AppRole" Target="AppRole.Name" Category="Contains" />
 <Link Source = "AppRole" Target="AppRole.NormalizedName" Category="Contains" />
 <Link Source = "IModel" Target="Brand" Category="Contains" />
+<Link Source = "AppUser" Target="AppUser.Orders" Category="Contains" />
 <Link Source = "AppUser" Target="AppUser.Id" Category="Contains" />
 <Link Source = "AppUser" Target="AppUser.AccessFailedCount" Category="Contains" />
 <Link Source = "AppUser" Target="AppUser.ConcurrencyStamp" Category="Contains" />
@@ -230,6 +298,7 @@ TypeMapping: Microsoft.EntityFrameworkCore.Storage.StringTypeMapping" IsPrimaryK
 <Link Source = "AppUser" Target="AppUser.PasswordHash" Category="Contains" />
 <Link Source = "AppUser" Target="AppUser.PhoneNumber" Category="Contains" />
 <Link Source = "AppUser" Target="AppUser.PhoneNumberConfirmed" Category="Contains" />
+<Link Source = "AppUser" Target="AppUser.RefreshToken" Category="Contains" />
 <Link Source = "AppUser" Target="AppUser.SecurityStamp" Category="Contains" />
 <Link Source = "AppUser" Target="AppUser.TwoFactorEnabled" Category="Contains" />
 <Link Source = "AppUser" Target="AppUser.UserName" Category="Contains" />
@@ -251,10 +320,32 @@ TypeMapping: Microsoft.EntityFrameworkCore.Storage.StringTypeMapping" IsPrimaryK
 <Link Source="Image" Target="Product" From="Image.ProductId" To="Product.Id" Name="Image -> Product" Annotations="Relational:Name: fk_images_products_product_id" IsUnique="False" Label="1:*" Category="Foreign Key" />
 <Link Source = "Image" Target="Image.ProductId" Category="Contains" />
 <Link Source = "Image" Target="Image.Url" Category="Contains" />
-<Link Source = "IModel" Target="Product" Category="Contains" />
+<Link Source = "IModel" Target="Order" Category="Contains" />
 <Link Source = "OS" Target="OS.Products" Category="Contains" />
 <Link Source = "OS" Target="OS.Id" Category="Contains" />
 <Link Source = "OS" Target="OS.Name" Category="Contains" />
+<Link Source = "IModel" Target="OrderItem" Category="Contains" />
+<Link Source = "Order" Target="Order.DeliveryAddress" Category="Contains" />
+<Link Source = "Order" Target="Order.Items" Category="Contains" />
+<Link Source = "Order" Target="Order.User" Category="Contains" />
+<Link Source = "Order" Target="Order.Id" Category="Contains" />
+<Link Source="Order" Target="AppUser" From="Order.UserId" To="AppUser.Id" Name="Order -> AppUser" Annotations="Relational:Name: fk_orders_users_user_id" IsUnique="False" Label="1:*" Category="Foreign Key" />
+<Link Source = "Order" Target="Order.PaymentStatus" Category="Contains" />
+<Link Source = "Order" Target="Order.Placed" Category="Contains" />
+<Link Source = "Order" Target="Order.UserId" Category="Contains" />
+<Link Source = "IModel" Target="Product" Category="Contains" />
+<Link Source = "OrderItem" Target="OrderItem.ProductVariant" Category="Contains" />
+<Link Source = "OrderItem" Target="OrderItem.Id" Category="Contains" />
+<Link Source="OrderItem" Target="Order" From="OrderItem.OrderId" To="Order.Id" Name="OrderItem -> Order" Annotations="Relational:Name: fk_order_item_orders_order_id" IsUnique="False" Label="1:*" Category="Foreign Key" />
+<Link Source="OrderItem" Target="ProductVariant" From="OrderItem.ProductVariantProductId,ProductVariantColourId,ProductVariantStorageId" To="ProductVariant.ProductId,ColourId,StorageId" Name="OrderItem -> ProductVariant" Annotations="Relational:Name: fk_order_item_product_variants_product_variant_product_id_prod" IsUnique="False" Label="1:*" Category="Foreign Key" />
+<Link Source = "OrderItem" Target="OrderItem.ColourId" Category="Contains" />
+<Link Source = "OrderItem" Target="OrderItem.OrderId" Category="Contains" />
+<Link Source = "OrderItem" Target="OrderItem.ProductId" Category="Contains" />
+<Link Source = "OrderItem" Target="OrderItem.ProductVariantColourId" Category="Contains" />
+<Link Source = "OrderItem" Target="OrderItem.ProductVariantProductId" Category="Contains" />
+<Link Source = "OrderItem" Target="OrderItem.ProductVariantStorageId" Category="Contains" />
+<Link Source = "OrderItem" Target="OrderItem.Quantity" Category="Contains" />
+<Link Source = "OrderItem" Target="OrderItem.StorageId" Category="Contains" />
 <Link Source = "IModel" Target="ProductFeature" Category="Contains" />
 <Link Source = "Product" Target="Product.Brand" Category="Contains" />
 <Link Source = "Product" Target="Product.Images" Category="Contains" />
