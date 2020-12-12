@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Stripe;
 using System;
 using System.Text;
 using VueCliMiddleware;
@@ -113,6 +114,8 @@ namespace Ecommerce
                 }
 
             });
+
+            StripeConfiguration.ApiKey = "pk_test_51HkfibBfV7lz1ouiraM73l7NPthENq4eHC94cp82jSb1UudULaBdObfsCyylxB8KOHNvKy3p0gVNlYTp5PyGBODZ00EVfef35y";
         }
     }
 }
