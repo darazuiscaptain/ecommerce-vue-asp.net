@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -49,6 +50,12 @@ namespace Ecommerce.Features.Orders
             };
             user.Orders.Add(order);
             await _db.SaveChangesAsync();
+
+            var total = await _db.Orders
+                .Where(x => x.Id == order.Id)
+                .Select(x => Convert.ToInt32(x.Items.Sum(i => i.ProductVariant.Price * i.Quantity) * 100))
+                .SingleAsync();
+
         }
     }
 }
