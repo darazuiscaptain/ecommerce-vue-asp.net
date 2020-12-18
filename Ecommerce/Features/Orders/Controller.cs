@@ -57,23 +57,6 @@ namespace Ecommerce.Features.Orders
                 .Select(x => Convert.ToInt32(x.Items.Sum(i => i.ProductVariant.Price * i.Quantity) * 100))
                 .SingleAsync();
 
-            //var charges = new StripeChargeService();
-            //var charge = await charges.CreateAsync(new StripeChargeCreateOptions
-            //{
-            //    Amount = total,
-            //    Description = $"Order {order.Id} payment",
-            //    Currency = "GBP",
-            //    SourceTokenOrExistingSourceId = model.StripeToken
-            //});
-            //if (string.IsNullOrEmpty(charge.FailureCode))
-            //{
-            //    order.PaymentStatus = PaymentStatus.Paid;
-            //}
-            //else
-            //{
-            //    order.PaymentStatus = PaymentStatus.Declined;
-            //}
-
             var options = new ChargeCreateOptions
             {
                 Amount = total,
@@ -95,6 +78,23 @@ namespace Ecommerce.Features.Orders
 
             await _db.SaveChangesAsync();
             return Ok(new CreateOrderResponseViewModel(order.Id, order.PaymentStatus));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> List()
+        {
+            var orders = await _db.Orders
+              .Where(x => x.User.UserName == User.Identity.Name)
+              .Select(x => new OrderListViewModel
+              {
+                  Id = x.Id,
+                  Placed = x.Placed,
+                  Items = x.Items.Sum(i => i.Quantity),
+                  Total = x.Items.Sum(i => i.ProductVariant.Price * i.Quantity),
+                  PaymentStatus = Enum.GetName(typeof(PaymentStatus), x.PaymentStatus)
+              })
+              .ToListAsync();
+            return Ok(orders);
         }
     }
 }
