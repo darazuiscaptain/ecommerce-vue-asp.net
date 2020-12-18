@@ -109,11 +109,11 @@ namespace Ecommerce.Features.Authentication
             return new TokenViewModel
             {
                 AccessToken = new JwtSecurityTokenHandler().WriteToken(token),
-                Expiration = TimeZoneInfo.ConvertTimeFromUtc(token.ValidTo, TimeZoneInfo.Local),
+                AccessExpiration = TimeZoneInfo.ConvertTimeFromUtc(token.ValidTo, TimeZoneInfo.Local),
                 RefreshToken = refreshToken,
                 Roles = roles,
                 FirstName = user.FirstName,
-                LastName = user.LastName
+                LastName = user.LastName,
             };
         }
     }
