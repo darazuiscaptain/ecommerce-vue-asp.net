@@ -71,9 +71,17 @@ if (initialStore) {
 const routes = [
   { path: "/products", component: Catalogue },
   { path: "/products/:slug", component: Product },
-  { path: "/cart", component: Cart },
-  { path: "/checkout", component: Checkout, meta: { requiresAuth: true } },
-  { path: "/account", component: Account, meta: { requiresAuth: true } },
+  { path: "/cart", component: Cart, meta: { role: "Customer" } },
+  {
+    path: "/checkout",
+    component: Checkout,
+    meta: { requiresAuth: true, role: "Customer" },
+  },
+  {
+    path: "/account",
+    component: Account,
+    meta: { requiresAuth: true, role: "Customer" },
+  },
   { path: "*", redirect: "/products" },
 ];
 
@@ -86,10 +94,34 @@ router.beforeEach((to, from, next) => {
       store.commit("showAuthModal");
       next({ path: from.path, query: { redirect: to.path } });
     } else {
-      next();
+      if (
+        to.matched.some(
+          (route) => route.meta.role && store.getters.isInRole(route.meta.role)
+        )
+      ) {
+        next();
+      } else if (!to.matched.some((route) => route.meta.role)) {
+        next();
+      } else {
+        next({ path: "/" });
+      }
     }
   } else {
-    next();
+    if (
+      to.matched.some(
+        (route) =>
+          route.meta.role &&
+          (!store.getters.isAuthenticated ||
+            store.getters.isInRole(route.meta.role))
+      )
+    ) {
+      next();
+    } else {
+      if (to.matched.some((route) => route.meta.role)) {
+        next({ path: "/" });
+      }
+      next();
+    }
   }
 });
 
