@@ -11,9 +11,9 @@ export const shoppingCartItemCount = (state) => {
 
 export const isAuthenticated = (state) => {
   return (
-    state.auth !== null &&
-    state.auth.access_token !== null &&
-    new Date(state.auth.expiration) > new Date()
+    state.auth !== null && state.auth.access_token !== null
+    //  &&
+    // new Date(state.auth.expiration) > new Date()
   );
 };
 
