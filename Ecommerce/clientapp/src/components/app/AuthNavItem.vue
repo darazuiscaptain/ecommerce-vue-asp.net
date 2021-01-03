@@ -5,7 +5,7 @@
       <font-awesome-icon icon="user" />
       {{ fullName }}
     </template>
-    <b-dropdown-item to="/account">
+    <b-dropdown-item item v-if="isCustomer" to="/account">
       <!-- <i class="fas fa-user"></i> -->
       <font-awesome-icon icon="user" />
       My Account
@@ -30,9 +30,9 @@ export default {
     isAuthenticated() {
       return this.$store.getters.isAuthenticated;
     },
-    // isCustomer() {
-    //   return this.$store.getters.isInRole("Customer");
-    // },
+    isCustomer() {
+      return this.$store.getters.isInRole("Customer");
+    },
     fullName() {
       return `${this.$store.state.auth.firstName} ${this.$store.state.auth.lastName}`;
     },

@@ -9,7 +9,7 @@
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto mr-4">
           <!-- <b-nav-item to="/cart">Cart</b-nav-item> -->
-          <cart-summary></cart-summary>
+          <cart-summary v-if="isCustomer"></cart-summary>
           <auth-nav-item></auth-nav-item>
         </b-navbar-nav>
       </b-collapse>
@@ -38,6 +38,12 @@ export default {
     showAuthModal() {
       return this.$store.state.showAuthModal;
     },
+  },
+  isCustomer() {
+    return (
+      this.$store.getters.isInRole("Customer") ||
+      !this.$store.getters.isAuthenticated
+    );
   },
   // beforeCreate() {
   //   this.$store.commit("initialise");
