@@ -13,6 +13,7 @@ import {
   faArrowLeft,
   faTrashAlt,
   faShoppingCart,
+  faMobile,
   faUser,
   faSignOutAlt,
 } from "@fortawesome/free-solid-svg-icons";
@@ -47,6 +48,7 @@ library.add([
   faArrowLeft,
   faTrashAlt,
   faShoppingCart,
+  faMobile,
   faUser,
   faSignOutAlt,
 ]);
