@@ -32,7 +32,7 @@ namespace Ecommerce.Features.Authentication
         }
 
         [HttpPost]
-        public async Task<IActionResult> GetToken([FromBody] LoginViewModel model)
+        public async Task<ActionResult<TokenViewModel>> GetToken([FromBody] LoginViewModel model)
         {
             var errorMessage = "Invalid e-mail address and/or password";
 
@@ -58,7 +58,7 @@ namespace Ecommerce.Features.Authentication
         }
 
         [HttpPost("refresh")]
-        public async Task<IActionResult> Refreshtoken([FromBody] RefreshTokenViewModel model)
+        public async Task<ActionResult<TokenViewModel>> Refreshtoken([FromBody] RefreshTokenViewModel model)
         {
             if (!ModelState.IsValid)
                 return BadRequest();

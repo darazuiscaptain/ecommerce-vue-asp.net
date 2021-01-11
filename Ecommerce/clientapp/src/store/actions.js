@@ -49,7 +49,7 @@ export const login = ({ commit }, payload) => {
         const auth = response.data;
         axios.defaults.headers.common[
           "Authorization"
-        ] = `Bearer ${auth.access_token}`;
+        ] = `Bearer ${auth.accessToken}`;
         commit("loginSuccess", auth);
         commit("hideAuthModal");
         resolve(response);

@@ -9,6 +9,7 @@
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto mr-4">
           <!-- <b-nav-item to="/cart">Cart</b-nav-item> -->
+          <b-button variant="primary" @click="testUser">测试</b-button>
           <cart-summary v-if="isCustomer"></cart-summary>
           <auth-nav-item></auth-nav-item>
         </b-navbar-nav>
@@ -23,6 +24,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import CartSummary from "./components/cart/CartSummary.vue";
 import AuthNavItem from "./components/app/AuthNavItem.vue";
 import AuthModal from "./components/app/AuthModal.vue";
@@ -38,12 +40,20 @@ export default {
     showAuthModal() {
       return this.$store.state.showAuthModal;
     },
+    isCustomer() {
+      return (
+        this.$store.getters.isInRole("Customer") ||
+        !this.$store.getters.isAuthenticated
+      );
+    },
   },
-  isCustomer() {
-    return (
-      this.$store.getters.isInRole("Customer") ||
-      !this.$store.getters.isAuthenticated
-    );
+  methods: {
+    testUser() {
+      console.log("TestUser!");
+      axios.post("/WeatherForecast", { test: "测试" }).then((re) => {
+        console.log(re.data);
+      });
+    },
   },
   // beforeCreate() {
   //   this.$store.commit("initialise");

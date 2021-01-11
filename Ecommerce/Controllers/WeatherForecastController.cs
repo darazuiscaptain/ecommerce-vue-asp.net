@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Ecommerce.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace Ecommerce.Controllers
@@ -11,6 +14,8 @@ namespace Ecommerce.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
+        private readonly EcommerceContext _db;
+
         private static readonly string[] Summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
@@ -18,9 +23,10 @@ namespace Ecommerce.Controllers
 
         private readonly ILogger<WeatherForecastController> _logger;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, EcommerceContext db)
         {
             _logger = logger;
+            this._db = db;
         }
 
         [HttpGet]
@@ -35,5 +41,22 @@ namespace Ecommerce.Controllers
             })
             .ToArray();
         }
+
+        //[HttpPost, Authorize(Roles = "Customer")]
+        [HttpPost]
+        public async Task<IActionResult> TestUser(Receipt rec)
+        {
+            var token = HttpContext.Request.Headers["Authorization"];
+            var userName = HttpContext.User.Identity.Name;
+            var user = await _db.Users.SingleAsync(x => x.UserName == userName);
+            var i = 0 ;
+            i++;
+            return Ok(rec.Test + ": " + user.FullName);
+        }
+    }
+
+    public class Receipt
+    {
+        public string Test { get; set; }
     }
 }
