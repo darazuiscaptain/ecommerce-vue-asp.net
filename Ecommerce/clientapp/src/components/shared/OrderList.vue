@@ -5,6 +5,7 @@
       <thead>
         <tr>
           <th>Order #</th>
+          <th v-if="isAdmin">Customer</th>
           <th>Placed</th>
           <th>Items</th>
           <th>Total</th>
@@ -23,6 +24,7 @@
           </tr>
         </template>
         <tr v-else>
+          <td v-if="isAdmin" colspan="6">There are no orders to display.</td>
           <td colspan="5">You haven't placed any orders yet!</td>
         </tr>
       </tbody>
@@ -37,6 +39,11 @@ export default {
     orders: {
       type: Array,
       required: false,
+    },
+  },
+  computed: {
+    isAdmin() {
+      return this.$store.getters.isInRole("Admin");
     },
   },
 };
