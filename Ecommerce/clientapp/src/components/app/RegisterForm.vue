@@ -80,6 +80,7 @@ export default {
           } else {
             this.regErrors = error.data;
           }
+          console.log(this.regErrors);
         });
     },
     close() {
