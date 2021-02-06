@@ -6,7 +6,8 @@
       to="/admin/products/create"
       class="float-right mb-4"
     >
-      <i class="fas fa-plus"></i>
+      <!-- <i class="fas fa-plus"></i> -->
+      <font-awesome-icon icon="plus" />
       Add new product
     </b-button>
     <table class="table table-striped table-hover">

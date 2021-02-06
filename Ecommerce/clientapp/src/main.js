@@ -16,6 +16,7 @@ import {
   faMobile,
   faUser,
   faSignOutAlt,
+  faPlus
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -56,6 +57,7 @@ library.add([
   faMobile,
   faUser,
   faSignOutAlt,
+  faPlus
 ]);
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 

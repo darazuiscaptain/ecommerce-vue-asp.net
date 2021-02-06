@@ -3,7 +3,8 @@
     <vue-toastr ref="mytoast"></vue-toastr>
 
     <b-button variant="outline-secondary" @click.prevent="back">
-      <i class="fas fa-arrow-left"></i>
+      <!-- <i class="fas fa-arrow-left"></i> -->
+      <font-awesome-icon icon="arrow-left" />
       Back to results
     </b-button>
     <b-row class="pt-4">

@@ -17,7 +17,6 @@ namespace Ecommerce.Features.Filters
             _db = db;
         }
 
-
         [HttpGet]
         public async Task<IActionResult> Get()
         {
